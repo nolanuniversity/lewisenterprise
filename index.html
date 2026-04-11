@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Lewis School of Entrepreneurial Finance at Nolan University — the first academic institution dedicated entirely to entrepreneurial finance. BSc, MSc, and executive programmes in venture capital, startup finance, and term sheet negotiation.">
-    <meta name="keywords" content="entrepreneurial finance, venture capital, private equity, startup finance, term sheet, Nolan University, Lewis School, Mwaba Lewis">
+    <meta name="description" content="Lewis School of Entrepreneurial Finance at Nolan University — the first academic institution dedicated entirely to entrepreneurial finance. Part of the Graduate School of Banking & Finance.">
+    <meta name="keywords" content="entrepreneurial finance, venture capital, private equity, startup finance, term sheet, Nolan University, Lewis School, Graduate School of Banking & Finance">
     <meta name="author" content="Nolan University">
     <meta property="og:title" content="Lewis School of Entrepreneurial Finance | Nolan University">
     <meta property="og:description" content="Where Capital Meets Enterprise. The first school dedicated to entrepreneurial finance.">
-    <meta property="og:image" content="https://nolanuniversity.github.io/lewisschool/assets/images/og-image.jpg">
-    <meta property="og:url" content="https://nolanuniversity.github.io/lewisschool">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <title>Lewis School of Entrepreneurial Finance | Nolan University</title>
@@ -20,6 +18,7 @@
         /* ========================================
            Lewis School of Entrepreneurial Finance
            Nolan University | Navy + Gold Theme
+           Graduate School of Banking & Finance
            ======================================== */
 
         /* CSS Variables - Nolan University Brand Colours */
@@ -247,74 +246,60 @@
             padding: 16px 24px;
         }
 
-        /* Logo Area - Nolan University Style */
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .nolan-shield {
+        /* Hierarchy Logo Area */
+        .hierarchy-logo {
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
-        .shield-icon {
-            width: 45px;
-            height: 50px;
-            background-color: var(--navy);
-            border-radius: 8px 8px 20px 20px;
-            position: relative;
+        .university-row {
             display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .shield-icon::before {
-            content: "★";
-            color: var(--gold);
-            font-size: 20px;
-        }
-
-        .university-text {
-            display: flex;
-            flex-direction: column;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .university-name {
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 800;
             letter-spacing: 2px;
             color: var(--navy);
-            line-height: 1.3;
         }
 
         .university-tagline {
-            font-size: 8px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            color: var(--gray-dark);
-        }
-
-        .school-text {
-            margin-left: 16px;
-            border-left: 2px solid var(--gold);
-            padding-left: 16px;
-        }
-
-        .school-name {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--navy);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .school-subtitle {
             font-size: 10px;
             color: var(--gold);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .school-hierarchy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+
+        .graduate-school {
+            font-size: 12px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            color: var(--navy);
+            background-color: var(--gray-light);
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+
+        .hierarchy-arrow {
+            color: var(--gold);
+            font-size: 12px;
+        }
+
+        .lewis-school {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
         }
 
         /* Navigation */
@@ -424,7 +409,7 @@
             position: relative;
             background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
             color: var(--white);
-            padding: 80px 0 120px;
+            padding: 80px 0 100px;
             overflow: hidden;
         }
 
@@ -442,22 +427,16 @@
         .hero .container {
             position: relative;
             z-index: 2;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
             text-align: center;
         }
 
-        .hero-badge {
+        .founded-badge {
             display: inline-block;
             background-color: rgba(255,255,255,0.15);
             padding: 6px 16px;
             border-radius: 50px;
             font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
         }
 
         .hero h1 {
@@ -472,12 +451,11 @@
         }
 
         .hero-subtitle {
-            font-size: 20px;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 32px;
             opacity: 0.9;
-            margin-bottom: 32px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            line-height: 1.6;
         }
 
         .hero-buttons {
@@ -487,78 +465,72 @@
             flex-wrap: wrap;
         }
 
-        .hero-stats {
-            position: absolute;
-            bottom: -40px;
-            left: 0;
-            right: 0;
-            z-index: 3;
+        /* Hierarchy Card Section */
+        .hierarchy-card-section {
+            padding: 60px 0;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--gray-mid);
         }
 
-        .stats-row {
+        .hierarchy-cards {
             display: flex;
-            justify-content: space-between;
-            background: var(--white);
-            border-radius: 12px;
-            padding: 32px 48px;
-            box-shadow: var(--shadow-lg);
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
             flex-wrap: wrap;
-            gap: 24px;
         }
 
-        .stat-item {
+        .hierarchy-card {
+            background: var(--gray-light);
+            padding: 28px 32px;
+            border-radius: 16px;
             text-align: center;
-            flex: 1;
+            min-width: 220px;
+            transition: var(--transition);
+            border: 1px solid var(--gray-mid);
         }
 
-        .stat-number {
-            display: block;
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--navy);
-            font-family: 'Playfair Display', serif;
+        .hierarchy-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
         }
 
-        .stat-label {
-            font-size: 14px;
-            color: var(--gray-dark);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .hierarchy-card.highlight {
+            background: var(--navy);
+            border-color: var(--gold);
         }
 
-        /* Quote Section */
-        .quote-section {
-            padding: 80px 0;
-            background-color: var(--gray-light);
-        }
-
-        .quote-block {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .quote-icon {
-            font-size: 48px;
+        .hierarchy-card.highlight h3 {
             color: var(--gold);
-            opacity: 0.5;
-            margin-bottom: 16px;
         }
 
-        .quote-text {
-            font-size: 28px;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
+        .hierarchy-card.highlight p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .hierarchy-card i {
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .hierarchy-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
             color: var(--navy);
-            margin-bottom: 16px;
-            line-height: 1.4;
+            font-family: 'Inter', sans-serif;
         }
 
-        .quote-author {
-            font-size: 16px;
-            font-weight: 600;
+        .hierarchy-card p {
+            font-size: 12px;
             color: var(--gray-dark);
+            margin-top: 5px;
+        }
+
+        .hierarchy-arrow-icon {
+            font-size: 28px;
+            color: var(--gold);
         }
 
         /* Section Styles */
@@ -1175,6 +1147,15 @@
                 grid-template-columns: 1fr;
                 gap: 32px;
             }
+            
+            .hierarchy-cards {
+                gap: 12px;
+            }
+            
+            .hierarchy-card {
+                padding: 20px 24px;
+                min-width: 180px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1196,17 +1177,6 @@
             
             .hero-subtitle {
                 font-size: 16px;
-            }
-            
-            .hero-stats {
-                position: relative;
-                bottom: -40px;
-            }
-            
-            .stats-row {
-                flex-direction: column;
-                align-items: center;
-                padding: 24px;
             }
             
             .quote-text {
@@ -1241,14 +1211,18 @@
                 text-align: center;
             }
             
-            .logo-area {
-                flex-wrap: wrap;
+            .university-row {
+                flex-direction: column;
+                gap: 4px;
             }
             
-            .school-text {
-                margin-left: 0;
-                padding-left: 0;
-                border-left: none;
+            .hierarchy-cards {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .hierarchy-arrow-icon {
+                transform: rotate(90deg);
             }
         }
 
@@ -1297,17 +1271,15 @@
 <!-- Main Header -->
 <header class="main-header">
     <div class="container">
-        <div class="logo-area">
-            <div class="nolan-shield">
-                <div class="shield-icon"></div>
-            </div>
-            <div class="university-text">
+        <div class="hierarchy-logo">
+            <div class="university-row">
                 <span class="university-name">NOLAN UNIVERSITY</span>
                 <span class="university-tagline">Learn to Lead. Lead to Excel.</span>
             </div>
-            <div class="school-text">
-                <div class="school-name">Lewis School of</div>
-                <div class="school-subtitle">ENTREPRENEURIAL FINANCE</div>
+            <div class="school-hierarchy">
+                <span class="graduate-school">Graduate School of Banking & Finance</span>
+                <span class="hierarchy-arrow"><i class="fas fa-chevron-right"></i></span>
+                <span class="lewis-school">Lewis School of Entrepreneurial Finance</span>
             </div>
         </div>
         <nav class="main-nav">
@@ -1363,47 +1335,52 @@
 <section class="hero">
     <div class="hero-overlay"></div>
     <div class="container">
-        <div class="hero-content">
-            <span class="hero-badge">Founded 2025</span>
-            <h1>Where Capital <span class="text-gold">Meets</span> Enterprise</h1>
-            <p class="hero-subtitle">The first academic institution dedicated entirely to entrepreneurial finance. Learn to fund ventures. Learn to build ventures. Graduate fluent in both.</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-gold btn-large">Explore Programmes <i class="fas fa-arrow-right"></i></a>
-                <a href="#" class="btn btn-outline-white btn-large">Apply Now</a>
-            </div>
+        <div class="founded-badge">Founded 2025</div>
+        <h1>Where Capital <span class="text-gold">Meets</span> Enterprise</h1>
+        <p class="hero-subtitle">The first academic institution dedicated entirely to entrepreneurial finance. Learn to fund ventures. Learn to build ventures. Graduate fluent in both.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-gold btn-large">Explore Programmes <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn btn-outline-white btn-large">Apply Now</a>
         </div>
     </div>
-    <div class="hero-stats">
-        <div class="container">
-            <div class="stats-row">
-                <div class="stat-item">
-                    <span class="stat-number">500+</span>
-                    <span class="stat-label">Students (Year 5)</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">$50M+</span>
-                    <span class="stat-label">Student-Led Funding</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Countries</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">15:1</span>
-                    <span class="stat-label">Student:Faculty Ratio</span>
-                </div>
+</section>
+
+<!-- Hierarchy Card Section - Visual Representation -->
+<section class="hierarchy-card-section">
+    <div class="container">
+        <div class="hierarchy-cards">
+            <div class="hierarchy-card">
+                <i class="fas fa-university"></i>
+                <h3>Nolan University</h3>
+                <p>Parent University</p>
+            </div>
+            <div class="hierarchy-arrow-icon">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="hierarchy-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Graduate School of<br>Banking & Finance</h3>
+                <p>Parent School / College</p>
+            </div>
+            <div class="hierarchy-arrow-icon">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="hierarchy-card highlight">
+                <i class="fas fa-chart-line"></i>
+                <h3>Lewis School of<br>Entrepreneurial Finance</h3>
+                <p>Named School</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Founder's Quote -->
-<section class="quote-section">
+<section class="quote-section" style="padding: 60px 0; background-color: var(--gray-light);">
     <div class="container">
-        <div class="quote-block">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <p class="quote-text">Finance without enterprise is sterile. Enterprise without finance is fragile.</p>
-            <p class="quote-author">— Mwaba Lewis, Founder, Nolan University</p>
+        <div class="quote-block" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <i class="fas fa-quote-left quote-icon" style="font-size: 48px; color: var(--gold); opacity: 0.5; margin-bottom: 16px;"></i>
+            <p class="quote-text" style="font-size: 28px; font-family: 'Playfair Display', serif; font-style: italic; color: var(--navy); margin-bottom: 16px;">Finance without enterprise is sterile. Enterprise without finance is fragile.</p>
+            <p class="quote-author" style="font-size: 16px; font-weight: 600; color: var(--gray-dark);">— Mwaba Lewis, Founder, Nolan University</p>
         </div>
     </div>
 </section>
@@ -1807,7 +1784,7 @@
                     <span class="footer-university">NOLAN UNIVERSITY</span>
                     <span class="footer-school">Lewis School of Entrepreneurial Finance</span>
                 </div>
-                <p>Where Capital Meets Enterprise. The first academic institution dedicated to entrepreneurial finance.</p>
+                <p>Where Capital Meets Enterprise. The first academic institution dedicated to entrepreneurial finance. Part of the Graduate School of Banking & Finance.</p>
                 <div class="footer-social">
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
