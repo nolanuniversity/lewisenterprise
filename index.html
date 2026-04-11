@@ -446,7 +446,7 @@
             color: var(--gold);
         }
 
-        /* Image Slider Section - FIXED (No dark overlay) */
+        /* Image Slider Section - FULL IMAGE DISPLAY (no cropping) */
         .image-slider-section {
             padding: 60px 0;
             background-color: var(--gray-light);
@@ -480,6 +480,7 @@
             overflow: hidden;
             border-radius: 20px;
             box-shadow: var(--shadow-lg);
+            background-color: var(--navy);
         }
 
         .slider {
@@ -498,36 +499,38 @@
             height: 100%;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-            background-size: cover;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
+            background-color: var(--navy);
         }
 
         .slide.active {
             opacity: 1;
         }
 
-        /* Text overlay - subtle gradient for readability only, not darkening the image */
+        /* Text overlay - subtle gradient at bottom only */
         .slide-content {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
             padding: 40px 24px 24px;
             color: var(--white);
+            border-radius: 0 0 20px 20px;
         }
 
         .slide-content h3 {
             font-size: 20px;
             margin-bottom: 8px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .slide-content p {
             font-size: 14px;
             opacity: 0.95;
-            text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
         }
 
         .slider-nav {
@@ -960,7 +963,14 @@
         <nav class="main-nav">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Programmes</a></li>
+                <li class="dropdown">
+                    <a href="#">Programmes <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Postgraduate</a></li>
+                        <li><a href="#">Executive</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">Faculty</a></li>
                 <li><a href="#">Admissions</a></li>
                 <li><a href="#">News</a></li>
@@ -1026,7 +1036,7 @@
     </div>
 </section>
 
-<!-- Image Slider - FIXED: No dark overlay, bright and clear images -->
+<!-- Image Slider - FULL IMAGES (no cropping) -->
 <section class="image-slider-section">
     <div class="container">
         <div class="slider-title">
@@ -1226,4 +1236,4 @@
 </script>
 
 </body>
-    </html>
+            </html>
