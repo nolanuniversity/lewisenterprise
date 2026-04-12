@@ -1,0 +1,11 @@
+# Robots.txt for Lewis School of Entrepreneurial Finance
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Disable access to admin or private directories (if any)
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://nolanuniversity.github.io/lewisschool/sitemap.xml
