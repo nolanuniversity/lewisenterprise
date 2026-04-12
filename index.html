@@ -215,6 +215,7 @@
         .top-bar-right {
             display: flex;
             gap: 20px;
+            align-items: center;
         }
 
         .top-bar-right a {
@@ -223,10 +224,200 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            cursor: pointer;
         }
 
         .top-bar-right a:hover {
             color: var(--gold);
+        }
+
+        /* Search Modal */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-overlay.active {
+            display: flex;
+        }
+
+        .search-modal {
+            width: 90%;
+            max-width: 600px;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .search-modal h3 {
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+
+        .search-input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .search-input-group input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid var(--gray-mid);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .search-input-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .search-results {
+            max-height: 300px;
+            overflow-y: auto;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .search-result-item {
+            padding: 12px;
+            border-bottom: 1px solid var(--gray-mid);
+            cursor: pointer;
+        }
+
+        .search-result-item:hover {
+            background: var(--gray-light);
+        }
+
+        .search-result-item h4 {
+            margin-bottom: 4px;
+            color: var(--navy);
+        }
+
+        .search-result-item p {
+            font-size: 12px;
+            color: var(--gray-dark);
+        }
+
+        .close-search {
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+
+        /* Student Portal Modal */
+        .portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portal-overlay.active {
+            display: flex;
+        }
+
+        .portal-modal {
+            width: 90%;
+            max-width: 450px;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .portal-modal h3 {
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .portal-modal p {
+            color: var(--gray-dark);
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .portal-input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .portal-input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        .portal-input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--gray-mid);
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .portal-input-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .login-btn {
+            width: 100%;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+
+        .login-btn:hover {
+            background: var(--navy-light);
+        }
+
+        .portal-links {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .portal-links a {
+            color: var(--gold);
+        }
+
+        .close-portal {
+            background: var(--gray-light);
+            color: var(--gray-darker);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 16px;
+            width: 100%;
         }
 
         /* Main Header */
@@ -1388,102 +1579,63 @@
             opacity: 1;
         }
 
+        /* Notification Toast */
+        .notification-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--navy);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            z-index: 2000;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification-toast.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 44px;
-            }
-            .section-title {
-                font-size: 32px;
-            }
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            .hierarchy-cards {
-                gap: 12px;
-            }
-            .hierarchy-card {
-                padding: 20px 24px;
-                min-width: 180px;
-            }
+            .hero h1 { font-size: 44px; }
+            .section-title { font-size: 32px; }
+            .about-grid { grid-template-columns: 1fr; gap: 32px; }
+            .hierarchy-cards { gap: 12px; }
+            .hierarchy-card { padding: 20px 24px; min-width: 180px; }
         }
 
         @media (max-width: 768px) {
-            .main-nav {
-                display: none;
-            }
-            .mobile-menu-btn {
-                display: block;
-            }
-            .top-bar-left {
-                display: none;
-            }
-            .hero h1 {
-                font-size: 32px;
-            }
-            .hero-subtitle {
-                font-size: 16px;
-            }
-            .quote-text {
-                font-size: 20px;
-            }
-            .section-title {
-                font-size: 28px;
-            }
-            .programme-tabs {
-                gap: 8px;
-            }
-            .tab-btn {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-            .founder-note {
-                flex-direction: column;
-                text-align: center;
-            }
-            .event-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-            .university-row {
-                flex-direction: column;
-                gap: 4px;
-            }
-            .hierarchy-cards {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .hierarchy-arrow-icon {
-                transform: rotate(90deg);
-            }
+            .main-nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .top-bar-left { display: none; }
+            .hero h1 { font-size: 32px; }
+            .hero-subtitle { font-size: 16px; }
+            .quote-text { font-size: 20px; }
+            .section-title { font-size: 28px; }
+            .programme-tabs { gap: 8px; }
+            .tab-btn { padding: 8px 16px; font-size: 14px; }
+            .founder-note { flex-direction: column; text-align: center; }
+            .event-item { flex-direction: column; align-items: flex-start; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .university-row { flex-direction: column; gap: 4px; }
+            .hierarchy-cards { flex-direction: column; align-items: stretch; }
+            .hierarchy-arrow-icon { transform: rotate(90deg); }
         }
 
         @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-            .hero-buttons .btn {
-                width: 100%;
-                text-align: center;
-            }
-            .programme-grid {
-                grid-template-columns: 1fr;
-            }
-            .slide-content h3 {
-                font-size: 16px;
-            }
-            .slide-content p {
-                font-size: 12px;
-            }
+            .container { padding: 0 16px; }
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .hero-buttons .btn { width: 100%; text-align: center; }
+            .programme-grid { grid-template-columns: 1fr; }
+            .slide-content h3 { font-size: 16px; }
+            .slide-content p { font-size: 12px; }
         }
     </style>
 </head>
@@ -1491,6 +1643,48 @@
 
 <!-- Skip to content link for accessibility -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Search Modal -->
+<div class="search-overlay" id="searchOverlay">
+    <div class="search-modal">
+        <i class="fas fa-search" style="font-size: 48px; color: var(--gold); margin-bottom: 16px;"></i>
+        <h3>Search Lewis School</h3>
+        <div class="search-input-group">
+            <input type="text" id="searchInput" placeholder="Search for programmes, faculty, events..." autocomplete="off">
+            <button class="btn btn-primary" id="searchBtn">Search</button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
+        <button class="close-search" id="closeSearch">Close</button>
+    </div>
+</div>
+
+<!-- Student Portal Modal -->
+<div class="portal-overlay" id="portalOverlay">
+    <div class="portal-modal">
+        <i class="fas fa-user-graduate" style="font-size: 48px; color: var(--gold); margin-bottom: 16px;"></i>
+        <h3>Student Portal</h3>
+        <p>Access your courses, grades, and resources</p>
+        <div class="portal-input-group">
+            <label>Student ID / Email</label>
+            <input type="email" id="portalEmail" placeholder="student@nolan.edu">
+        </div>
+        <div class="portal-input-group">
+            <label>Password</label>
+            <input type="password" id="portalPassword" placeholder="••••••••">
+        </div>
+        <button class="login-btn" id="portalLoginBtn">Login</button>
+        <div class="portal-links">
+            <a href="#" id="forgotPassword">Forgot Password?</a>
+            <a href="#" id="createAccount">Create Account</a>
+        </div>
+        <button class="close-portal" id="closePortal">Cancel</button>
+    </div>
+</div>
+
+<!-- Notification Toast -->
+<div class="notification-toast" id="notificationToast">
+    <i class="fas fa-check-circle" style="margin-right: 8px;"></i> <span id="toastMessage">Message</span>
+</div>
 
 <!-- Top Bar -->
 <div class="top-bar">
@@ -1500,10 +1694,10 @@
             <span><i class="fas fa-envelope"></i> lewis@nolan.edu</span>
         </div>
         <div class="top-bar-right">
-            <a href="#"><i class="fas fa-user"></i> Student Portal</a>
+            <a href="#" id="studentPortalBtn"><i class="fas fa-user"></i> Student Portal</a>
             <a href="#"><i class="fas fa-chalkboard-user"></i> Faculty & Staff</a>
             <a href="#"><i class="fas fa-graduation-cap"></i> Alumni</a>
-            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#" id="searchBtnTop"><i class="fas fa-search"></i> Search</a>
         </div>
     </div>
 </div>
@@ -1620,47 +1814,25 @@
         <div class="slider-container">
             <div class="slider-wrapper">
                 <div class="slider">
-                    <!-- Slide 1 -->
                     <div class="slide active" style="background-image: url('5cf931d3-b8d7-411e-a678-33bb0c351eb5.png');">
-                        <div class="slide-content">
-                            <h3>Collaborative Learning</h3>
-                            <p>Students work together on real-world financial models</p>
-                        </div>
+                        <div class="slide-content"><h3>Collaborative Learning</h3><p>Students work together on real-world financial models</p></div>
                     </div>
-                    <!-- Slide 2 -->
                     <div class="slide" style="background-image: url('9e86b4a4-db26-4c62-92ad-83435ed107c8.png');">
-                        <div class="slide-content">
-                            <h3>Venture Pitch Sessions</h3>
-                            <p>Present your ideas to real investors</p>
-                        </div>
+                        <div class="slide-content"><h3>Venture Pitch Sessions</h3><p>Present your ideas to real investors</p></div>
                     </div>
-                    <!-- Slide 3 -->
                     <div class="slide" style="background-image: url('62853277-920c-4b9e-82a8-59d70b587ca5.png');">
-                        <div class="slide-content">
-                            <h3>Term Sheet Negotiations</h3>
-                            <p>Master the art of the deal in our simulation lab</p>
-                        </div>
+                        <div class="slide-content"><h3>Term Sheet Negotiations</h3><p>Master the art of the deal in our simulation lab</p></div>
                     </div>
-                    <!-- Slide 4 -->
                     <div class="slide" style="background-image: url('57549f34-5f82-4d45-8a7d-ef57591e33c1.png');">
-                        <div class="slide-content">
-                            <h3>Industry Networking</h3>
-                            <p>Connect with VC partners and startup founders</p>
-                        </div>
+                        <div class="slide-content"><h3>Industry Networking</h3><p>Connect with VC partners and startup founders</p></div>
                     </div>
-                    <!-- Slide 5 -->
                     <div class="slide" style="background-image: url('6041cf1a-18b2-4f1d-8527-4ef68b4d93ef.png');">
-                        <div class="slide-content">
-                            <h3>Global Perspective</h3>
-                            <p>Diverse cohort from 15+ countries</p>
-                        </div>
+                        <div class="slide-content"><h3>Global Perspective</h3><p>Diverse cohort from 15+ countries</p></div>
                     </div>
                 </div>
             </div>
             <div class="slider-nav">
-                <button class="slider-prev" aria-label="Previous slide">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+                <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
                 <div class="slider-dots">
                     <span class="dot active" data-slide="0"></span>
                     <span class="dot" data-slide="1"></span>
@@ -1668,9 +1840,7 @@
                     <span class="dot" data-slide="3"></span>
                     <span class="dot" data-slide="4"></span>
                 </div>
-                <button class="slider-next" aria-label="Next slide">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </div>
@@ -1706,34 +1876,10 @@
                 <a href="#" class="btn btn-secondary">Learn More About Us <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="about-stats-card">
-                <div class="stat-detail">
-                    <i class="fas fa-university"></i>
-                    <div>
-                        <strong>Parent Unit</strong>
-                        <span>Graduate School of Banking & Finance, Nolan University</span>
-                    </div>
-                </div>
-                <div class="stat-detail">
-                    <i class="fas fa-calendar-alt"></i>
-                    <div>
-                        <strong>Founded</strong>
-                        <span>2025</span>
-                    </div>
-                </div>
-                <div class="stat-detail">
-                    <i class="fas fa-user-graduate"></i>
-                    <div>
-                        <strong>Named For</strong>
-                        <span>Mwaba Lewis, Founder of Nolan University</span>
-                    </div>
-                </div>
-                <div class="stat-detail">
-                    <i class="fas fa-chalkboard-user"></i>
-                    <div>
-                        <strong>Inaugural Dean</strong>
-                        <span>Dr. Sarah Okafor</span>
-                    </div>
-                </div>
+                <div class="stat-detail"><i class="fas fa-university"></i><div><strong>Parent Unit</strong><span>Graduate School of Banking & Finance, Nolan University</span></div></div>
+                <div class="stat-detail"><i class="fas fa-calendar-alt"></i><div><strong>Founded</strong><span>2025</span></div></div>
+                <div class="stat-detail"><i class="fas fa-user-graduate"></i><div><strong>Named For</strong><span>Mwaba Lewis, Founder of Nolan University</span></div></div>
+                <div class="stat-detail"><i class="fas fa-chalkboard-user"></i><div><strong>Inaugural Dean</strong><span>Dr. Sarah Okafor</span></div></div>
             </div>
         </div>
     </div>
@@ -1747,203 +1893,53 @@
             <h2 class="section-title">Find Your Path</h2>
             <p class="section-subtitle">Undergraduate, postgraduate, and executive education for every stage of your career</p>
         </div>
-        
-        <!-- Tab Navigation -->
         <div class="programme-tabs">
             <button class="tab-btn active" data-tab="undergrad">Undergraduate</button>
             <button class="tab-btn" data-tab="postgrad">Postgraduate</button>
             <button class="tab-btn" data-tab="exec">Executive & Certificate</button>
         </div>
-        
-        <!-- Undergraduate Tab -->
         <div class="tab-content active" id="undergrad">
             <div class="programme-grid">
-                <div class="programme-card">
-                    <div class="programme-badge">BSc</div>
-                    <h3>Entrepreneurial Finance</h3>
-                    <div class="programme-meta">
-                        <span><i class="fas fa-clock"></i> 3–4 years</span>
-                        <span><i class="fas fa-user-graduate"></i> Full-time</span>
-                    </div>
-                    <p>Core finance curriculum with startup financial modeling, venture capital fundamentals, and a capstone venture pitch project.</p>
-                    <div class="programme-footer">
-                        <a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="programme-card">
-                    <div class="programme-badge">BSc</div>
-                    <h3>Venture Capital & Private Equity</h3>
-                    <div class="programme-meta">
-                        <span><i class="fas fa-clock"></i> 3–4 years</span>
-                        <span><i class="fas fa-user-graduate"></i> Full-time</span>
-                    </div>
-                    <p>Focus on fund structures, deal sourcing, due diligence, valuation, and portfolio management for private markets.</p>
-                    <div class="programme-footer">
-                        <a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="programme-card">
-                    <div class="programme-badge">BSc</div>
-                    <h3>Financial Literacy & Enterprise Education</h3>
-                    <div class="programme-meta">
-                        <span><i class="fas fa-clock"></i> 3–4 years</span>
-                        <span><i class="fas fa-user-graduate"></i> Full-time</span>
-                    </div>
-                    <p>Prepares students to teach financial literacy in schools and communities, with a minor in entrepreneurship.</p>
-                    <div class="programme-footer">
-                        <a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                <div class="programme-card"><div class="programme-badge">BSc</div><h3>Entrepreneurial Finance</h3><div class="programme-meta"><span><i class="fas fa-clock"></i> 3–4 years</span><span><i class="fas fa-user-graduate"></i> Full-time</span></div><p>Core finance curriculum with startup financial modeling, venture capital fundamentals, and a capstone venture pitch project.</p><div class="programme-footer"><a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+                <div class="programme-card"><div class="programme-badge">BSc</div><h3>Venture Capital & Private Equity</h3><div class="programme-meta"><span><i class="fas fa-clock"></i> 3–4 years</span><span><i class="fas fa-user-graduate"></i> Full-time</span></div><p>Focus on fund structures, deal sourcing, due diligence, valuation, and portfolio management for private markets.</p><div class="programme-footer"><a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+                <div class="programme-card"><div class="programme-badge">BSc</div><h3>Financial Literacy & Enterprise Education</h3><div class="programme-meta"><span><i class="fas fa-clock"></i> 3–4 years</span><span><i class="fas fa-user-graduate"></i> Full-time</span></div><p>Prepares students to teach financial literacy in schools and communities, with a minor in entrepreneurship.</p><div class="programme-footer"><a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
             </div>
         </div>
-        
-        <!-- Postgraduate Tab -->
         <div class="tab-content" id="postgrad">
             <div class="programme-grid">
-                <div class="programme-card">
-                    <div class="programme-badge">MSc</div>
-                    <h3>Entrepreneurial Finance</h3>
-                    <div class="programme-meta">
-                        <span><i class="fas fa-clock"></i> 1–2 years</span>
-                        <span><i class="fas fa-user-graduate"></i> Full/Part-time</span>
-                    </div>
-                    <p>Advanced study of financing new and growing ventures, including angel investing, crowdfunding, venture debt, and exit strategies.</p>
-                    <div class="programme-footer">
-                        <a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="programme-card">
-                    <div class="programme-badge">MSc</div>
-                    <h3>Venture Capital & Growth Equity</h3>
-                    <div class="programme-meta">
-                        <span><i class="fas fa-clock"></i> 1–2 years</span>
-                        <span><i class="fas fa-user-graduate"></i> Full/Part-time</span>
-                    </div>
-                    <p>Deep dive into institutional venture capital, growth equity, fund management, and LP-GP dynamics.</p>
-                    <div class="programme-footer">
-                        <a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="programme-card">
-                    <div class="programme-badge">MBA Track</div>
-                    <h3>Entrepreneurial Finance</h3>
-                    <div class="programme-meta">
-                        <span><i class="fas fa-clock"></i> Embedded</span>
-                        <span><i class="fas fa-user-graduate"></i> Full-time</span>
-                    </div>
-                    <p>Specialisation within Nolan University's MBA programme focusing on finance for founders and early-stage investors.</p>
-                    <div class="programme-footer">
-                        <a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                <div class="programme-card"><div class="programme-badge">MSc</div><h3>Entrepreneurial Finance</h3><div class="programme-meta"><span><i class="fas fa-clock"></i> 1–2 years</span><span><i class="fas fa-user-graduate"></i> Full/Part-time</span></div><p>Advanced study of financing new and growing ventures, including angel investing, crowdfunding, venture debt, and exit strategies.</p><div class="programme-footer"><a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+                <div class="programme-card"><div class="programme-badge">MSc</div><h3>Venture Capital & Growth Equity</h3><div class="programme-meta"><span><i class="fas fa-clock"></i> 1–2 years</span><span><i class="fas fa-user-graduate"></i> Full/Part-time</span></div><p>Deep dive into institutional venture capital, growth equity, fund management, and LP-GP dynamics.</p><div class="programme-footer"><a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+                <div class="programme-card"><div class="programme-badge">MBA Track</div><h3>Entrepreneurial Finance</h3><div class="programme-meta"><span><i class="fas fa-clock"></i> Embedded</span><span><i class="fas fa-user-graduate"></i> Full-time</span></div><p>Specialisation within Nolan University's MBA programme focusing on finance for founders and early-stage investors.</p><div class="programme-footer"><a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
             </div>
         </div>
-        
-        <!-- Executive Tab -->
         <div class="tab-content" id="exec">
             <div class="programme-grid">
-                <div class="programme-card">
-                    <div class="programme-badge">Certificate</div>
-                    <h3>Funding Your Venture</h3>
-                    <div class="programme-meta">
-                        <span><i class="fas fa-clock"></i> 8 weeks</span>
-                        <span><i class="fas fa-laptop"></i> Hybrid</span>
-                    </div>
-                    <p>Intensive programme for working entrepreneurs seeking angel or VC funding. Term sheets, valuation, and pitch preparation.</p>
-                    <div class="programme-footer">
-                        <a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="programme-card">
-                    <div class="programme-badge">Certificate</div>
-                    <h3>Family Business & Wealth Management</h3>
-                    <div class="programme-meta">
-                        <span><i class="fas fa-clock"></i> 6 months</span>
-                        <span><i class="fas fa-user-graduate"></i> Part-time</span>
-                    </div>
-                    <p>For next-generation family business leaders balancing succession, investment, and innovation.</p>
-                    <div class="programme-footer">
-                        <a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="programme-card">
-                    <div class="programme-badge">Institute</div>
-                    <h3>Summer Institute in Entrepreneurial Finance</h3>
-                    <div class="programme-meta">
-                        <span><i class="fas fa-clock"></i> 2 weeks</span>
-                        <span><i class="fas fa-user-graduate"></i> Residential</span>
-                    </div>
-                    <p>Immersive programme for undergraduates from any discipline. No prior finance experience required.</p>
-                    <div class="programme-footer">
-                        <a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                <div class="programme-card"><div class="programme-badge">Certificate</div><h3>Funding Your Venture</h3><div class="programme-meta"><span><i class="fas fa-clock"></i> 8 weeks</span><span><i class="fas fa-laptop"></i> Hybrid</span></div><p>Intensive programme for working entrepreneurs seeking angel or VC funding. Term sheets, valuation, and pitch preparation.</p><div class="programme-footer"><a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+                <div class="programme-card"><div class="programme-badge">Certificate</div><h3>Family Business & Wealth Management</h3><div class="programme-meta"><span><i class="fas fa-clock"></i> 6 months</span><span><i class="fas fa-user-graduate"></i> Part-time</span></div><p>For next-generation family business leaders balancing succession, investment, and innovation.</p><div class="programme-footer"><a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
+                <div class="programme-card"><div class="programme-badge">Institute</div><h3>Summer Institute in Entrepreneurial Finance</h3><div class="programme-meta"><span><i class="fas fa-clock"></i> 2 weeks</span><span><i class="fas fa-user-graduate"></i> Residential</span></div><p>Immersive programme for undergraduates from any discipline. No prior finance experience required.</p><div class="programme-footer"><a href="#" class="programme-link">Learn More <i class="fas fa-arrow-right"></i></a></div></div>
             </div>
         </div>
-        
-        <div class="programmes-cta">
-            <a href="#" class="btn btn-primary">View All Programmes <i class="fas fa-arrow-right"></i></a>
-        </div>
+        <div class="programmes-cta"><a href="#" class="btn btn-primary">View All Programmes <i class="fas fa-arrow-right"></i></a></div>
     </div>
 </section>
 
-<!-- Student Testimonials Section -->
+<!-- Student Testimonials -->
 <section class="section testimonials-section">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Student Voices</span>
-            <h2 class="section-title">What Our Students Say</h2>
-            <p class="section-subtitle">Real experiences from the Lewis School community</p>
-        </div>
+        <div class="section-header"><span class="section-tag">Student Voices</span><h2 class="section-title">What Our Students Say</h2><p class="section-subtitle">Real experiences from the Lewis School community</p></div>
         <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                <p class="testimonial-text">"The term sheet negotiation course changed everything. I walked into investor meetings understanding exactly what I was signing. I raised my first round before graduation."</p>
-                <div class="testimonial-author">
-                    <div class="author-image"><i class="fas fa-user-circle"></i></div>
-                    <div>
-                        <h4>Amina K.</h4>
-                        <span>BSc Entrepreneurial Finance '25</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                <p class="testimonial-text">"I came from consulting with no finance background. The Lewis School gave me the modelling skills and the network. I start as an Associate at a VC firm next month."</p>
-                <div class="testimonial-author">
-                    <div class="author-image"><i class="fas fa-user-circle"></i></div>
-                    <div>
-                        <h4>James M.</h4>
-                        <span>MSc Venture Capital '24</span>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
-                <p class="testimonial-text">"The Lewis Venture Fund gave me real deal experience. I sourced, analysed, and presented a deal to actual investors. That's not a simulation — that's real learning."</p>
-                <div class="testimonial-author">
-                    <div class="author-image"><i class="fas fa-user-circle"></i></div>
-                    <div>
-                        <h4>Priya S.</h4>
-                        <span>BSc Venture Capital '25</span>
-                    </div>
-                </div>
-            </div>
+            <div class="testimonial-card"><div class="testimonial-quote"><i class="fas fa-quote-left"></i></div><p class="testimonial-text">"The term sheet negotiation course changed everything. I walked into investor meetings understanding exactly what I was signing. I raised my first round before graduation."</p><div class="testimonial-author"><div class="author-image"><i class="fas fa-user-circle"></i></div><div><h4>Amina K.</h4><span>BSc Entrepreneurial Finance '25</span></div></div></div>
+            <div class="testimonial-card"><div class="testimonial-quote"><i class="fas fa-quote-left"></i></div><p class="testimonial-text">"I came from consulting with no finance background. The Lewis School gave me the modelling skills and the network. I start as an Associate at a VC firm next month."</p><div class="testimonial-author"><div class="author-image"><i class="fas fa-user-circle"></i></div><div><h4>James M.</h4><span>MSc Venture Capital '24</span></div></div></div>
+            <div class="testimonial-card"><div class="testimonial-quote"><i class="fas fa-quote-left"></i></div><p class="testimonial-text">"The Lewis Venture Fund gave me real deal experience. I sourced, analysed, and presented a deal to actual investors. That's not a simulation — that's real learning."</p><div class="testimonial-author"><div class="author-image"><i class="fas fa-user-circle"></i></div><div><h4>Priya S.</h4><span>BSc Venture Capital '25</span></div></div></div>
         </div>
-        <div class="section-cta">
-            <a href="#" class="btn btn-secondary">Read More Stories <i class="fas fa-arrow-right"></i></a>
-        </div>
+        <div class="section-cta"><a href="#" class="btn btn-secondary">Read More Stories <i class="fas fa-arrow-right"></i></a></div>
     </div>
 </section>
 
 <!-- Partners Section -->
 <section class="section partners-section">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Industry Partners</span>
-            <h2 class="section-title">Trusted by Leading Firms</h2>
-            <p class="section-subtitle">Our students work with the best in venture capital and finance</p>
-        </div>
+        <div class="section-header"><span class="section-tag">Industry Partners</span><h2 class="section-title">Trusted by Leading Firms</h2><p class="section-subtitle">Our students work with the best in venture capital and finance</p></div>
         <div class="partners-grid">
             <div class="partner-item"><div class="partner-logo"><i class="fas fa-building"></i></div><span>Sequoia Capital</span></div>
             <div class="partner-item"><div class="partner-logo"><i class="fas fa-building"></i></div><span>Andreessen Horowitz</span></div>
@@ -1952,20 +1948,14 @@
             <div class="partner-item"><div class="partner-logo"><i class="fas fa-building"></i></div><span>Y Combinator</span></div>
             <div class="partner-item"><div class="partner-logo"><i class="fas fa-building"></i></div><span>Techstars</span></div>
         </div>
-        <div class="section-cta">
-            <a href="#" class="btn btn-secondary">Become a Partner <i class="fas fa-arrow-right"></i></a>
-        </div>
+        <div class="section-cta"><a href="#" class="btn btn-secondary">Become a Partner <i class="fas fa-arrow-right"></i></a></div>
     </div>
 </section>
 
-<!-- Experiential Learning Section -->
+<!-- Experiential Learning -->
 <section class="section experiential-section">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Learning by Doing</span>
-            <h2 class="section-title">Experiential Learning</h2>
-            <p class="section-subtitle">You don't just learn entrepreneurial finance. You do it.</p>
-        </div>
+        <div class="section-header"><span class="section-tag">Learning by Doing</span><h2 class="section-title">Experiential Learning</h2><p class="section-subtitle">You don't just learn entrepreneurial finance. You do it.</p></div>
         <div class="experiential-grid">
             <div class="exp-card"><div class="exp-icon"><i class="fas fa-chart-line"></i></div><h3>Capstone Venture Pitch</h3><p>Every student builds a financial model and pitches to real investors — VCs, angels, and family offices.</p></div>
             <div class="exp-card"><div class="exp-icon"><i class="fas fa-dollar-sign"></i></div><h3>Lewis Venture Fund</h3><p>Student-managed micro-fund that deploys real capital into early-stage ventures.</p></div>
@@ -1980,49 +1970,32 @@
 <!-- Faculty Spotlight -->
 <section class="section faculty-spotlight">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">World-Class Faculty</span>
-            <h2 class="section-title">Learn from Practitioners</h2>
-            <p class="section-subtitle">Our faculty have sat at both tables — as investors and as founders.</p>
-        </div>
+        <div class="section-header"><span class="section-tag">World-Class Faculty</span><h2 class="section-title">Learn from Practitioners</h2><p class="section-subtitle">Our faculty have sat at both tables — as investors and as founders.</p></div>
         <div class="faculty-grid">
             <div class="faculty-card"><div class="faculty-image"><div class="image-placeholder"><i class="fas fa-user-circle"></i></div></div><h3>Dr. Sarah Okafor</h3><p class="faculty-title">Founding Dean & Professor</p><p class="faculty-specialty">Venture Capital, Term Sheets</p><div class="faculty-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
             <div class="faculty-card"><div class="faculty-image"><div class="image-placeholder"><i class="fas fa-user-circle"></i></div></div><h3>Prof. Michael Chen</h3><p class="faculty-title">Professor of Practice</p><p class="faculty-specialty">Startup Financial Modeling</p><div class="faculty-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
             <div class="faculty-card"><div class="faculty-image"><div class="image-placeholder"><i class="fas fa-user-circle"></i></div></div><h3>Dr. Elena Vasquez</h3><p class="faculty-title">Associate Professor</p><p class="faculty-specialty">Entrepreneurial Finance Theory</p><div class="faculty-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
             <div class="faculty-card"><div class="faculty-image"><div class="image-placeholder"><i class="fas fa-user-circle"></i></div></div><h3>David Williams</h3><p class="faculty-title">Practitioner-in-Residence</p><p class="faculty-specialty">Angel Investing & Due Diligence</p><div class="faculty-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
         </div>
-        <div class="founder-note">
-            <div class="founder-image"><div class="image-placeholder"><i class="fas fa-user-tie"></i></div></div>
-            <div class="founder-info">
-                <h3>Mwaba Lewis, Founder</h3>
-                <p>Teaches <strong>"Finance for Founders"</strong> annually — a selective course open to Lewis School students by application. In his 30s, he is actively building Nolan University and the Lewis School alongside students and faculty.</p>
-                <a href="#" class="btn btn-outline">Read Founder's Story <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
+        <div class="founder-note"><div class="founder-image"><div class="image-placeholder"><i class="fas fa-user-tie"></i></div></div><div class="founder-info"><h3>Mwaba Lewis, Founder</h3><p>Teaches <strong>"Finance for Founders"</strong> annually — a selective course open to Lewis School students by application. In his 30s, he is actively building Nolan University and the Lewis School alongside students and faculty.</p><a href="#" class="btn btn-outline">Read Founder's Story <i class="fas fa-arrow-right"></i></a></div></div>
     </div>
 </section>
 
-<!-- News & Events Section -->
+<!-- News & Events -->
 <section class="section news-section">
     <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Stay Informed</span>
-            <h2 class="section-title">News & Events</h2>
-            <p class="section-subtitle">The latest from the Lewis School</p>
-        </div>
+        <div class="section-header"><span class="section-tag">Stay Informed</span><h2 class="section-title">News & Events</h2><p class="section-subtitle">The latest from the Lewis School</p></div>
         <div class="news-grid">
-            <div class="news-card"><div class="news-date">Mar 15, 2025</div><h3>Lewis School Announces Inaugural Cohort</h3><p>The first class of students will begin studies in Fall 2025. Applications are now open for the BSc and MSc programmes.</p><a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a></div>
-            <div class="news-card"><div class="news-date">Mar 10, 2025</div><h3>Mwaba Lewis Named to Forbes 30 Under 30</h3><p>Founder recognised for pioneering entrepreneurial finance education and building Nolan University.</p><a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a></div>
-            <div class="news-card"><div class="news-date">Mar 5, 2025</div><h3>Partnership with Leading VC Firm Announced</h3><p>Students to gain direct access to deal flow, mentorship, and internship opportunities.</p><a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a></div>
+            <div class="news-card"><div class="news-date">Mar 15, 2025</div><h3>Lewis School Announces Inaugural Cohort</h3><p>The first class of students will begin studies in Fall 2025. Applications are now open.</p><a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a></div>
+            <div class="news-card"><div class="news-date">Mar 10, 2025</div><h3>Mwaba Lewis Named to Forbes 30 Under 30</h3><p>Founder recognised for pioneering entrepreneurial finance education.</p><a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a></div>
+            <div class="news-card"><div class="news-date">Mar 5, 2025</div><h3>Partnership with Leading VC Firm Announced</h3><p>Students to gain direct access to deal flow and mentorship.</p><a href="#" class="news-link">Read More <i class="fas fa-arrow-right"></i></a></div>
         </div>
         <div class="events-list">
             <div class="event-item"><div class="event-date">Apr 10, 2025</div><div class="event-info"><h4>Virtual Open House</h4><p>Meet faculty and learn about programmes</p></div><a href="#" class="btn btn-sm btn-outline">Register</a></div>
             <div class="event-item"><div class="event-date">Apr 22, 2025</div><div class="event-info"><h4>Term Sheet Negotiation Workshop</h4><p>Hands-on workshop with industry experts</p></div><a href="#" class="btn btn-sm btn-outline">Register</a></div>
             <div class="event-item"><div class="event-date">May 5, 2025</div><div class="event-info"><h4>Annual Venture Capital Conference</h4><p>Keynotes, panels, and networking with top VCs</p></div><a href="#" class="btn btn-sm btn-outline">Register</a></div>
         </div>
-        <div class="section-cta">
-            <a href="#" class="btn btn-secondary">View All News & Events <i class="fas fa-arrow-right"></i></a>
-        </div>
+        <div class="section-cta"><a href="#" class="btn btn-secondary">View All News & Events <i class="fas fa-arrow-right"></i></a></div>
     </div>
 </section>
 
@@ -2046,46 +2019,23 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-col">
-                <div class="footer-logo">
-                    <span class="footer-university">NOLAN UNIVERSITY</span>
-                    <span class="footer-school">Lewis School of Entrepreneurial Finance</span>
-                </div>
-                <p>Where Capital Meets Enterprise. The first academic institution dedicated to entrepreneurial finance. Part of the Graduate School of Banking & Finance.</p>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul><li><a href="#">Programmes</a></li><li><a href="#">Faculty</a></li><li><a href="#">Admissions</a></li><li><a href="#">News & Events</a></li><li><a href="#">Contact Us</a></li></ul>
-            </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <ul><li><a href="#">Current Students</a></li><li><a href="#">Faculty & Staff</a></li><li><a href="#">Alumni</a></li><li><a href="#">Library</a></li><li><a href="#">Scholarships</a></li></ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul class="contact-info"><li><i class="fas fa-phone"></i> +1 (555) 123-4567</li><li><i class="fas fa-envelope"></i> lewis@nolan.edu</li><li><i class="fas fa-map-marker-alt"></i> Graduate School of Banking & Finance<br>Nolan University<br>New York, NY 10001</li></ul>
-            </div>
+            <div class="footer-col"><div class="footer-logo"><span class="footer-university">NOLAN UNIVERSITY</span><span class="footer-school">Lewis School of Entrepreneurial Finance</span></div><p>Where Capital Meets Enterprise. The first academic institution dedicated to entrepreneurial finance. Part of the Graduate School of Banking & Finance.</p><div class="footer-social"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+            <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#">Programmes</a></li><li><a href="#">Faculty</a></li><li><a href="#">Admissions</a></li><li><a href="#">News & Events</a></li><li><a href="#">Contact Us</a></li></ul></div>
+            <div class="footer-col"><h4>Resources</h4><ul><li><a href="#">Current Students</a></li><li><a href="#">Faculty & Staff</a></li><li><a href="#">Alumni</a></li><li><a href="#">Library</a></li><li><a href="#">Scholarships</a></li></ul></div>
+            <div class="footer-col"><h4>Contact</h4><ul class="contact-info"><li><i class="fas fa-phone"></i> +1 (555) 123-4567</li><li><i class="fas fa-envelope"></i> lewis@nolan.edu</li><li><i class="fas fa-map-marker-alt"></i> Graduate School of Banking & Finance<br>Nolan University<br>New York, NY 10001</li></ul></div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Nolan University. All rights reserved. Lewis School of Entrepreneurial Finance.</p>
-            <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Accessibility</a><a href="#">Terms of Use</a></div>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2025 Nolan University. All rights reserved. Lewis School of Entrepreneurial Finance.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Accessibility</a><a href="#">Terms of Use</a></div></div>
     </div>
 </footer>
 
-<!-- Built-in JavaScript -->
+<!-- Built-in JavaScript with all functionality -->
 <script>
     (function() {
-        // Mobile menu toggle
+        // ========================================
+        // 1. Mobile Menu Toggle
+        // ========================================
         const menuBtn = document.querySelector('.mobile-menu-btn');
         const mobileNav = document.querySelector('.mobile-nav');
-        
         if (menuBtn && mobileNav) {
             menuBtn.addEventListener('click', function() {
                 mobileNav.classList.toggle('show');
@@ -2093,11 +2043,12 @@
                 menuBtn.setAttribute('aria-expanded', expanded);
             });
         }
-        
-        // Programme tabs
+
+        // ========================================
+        // 2. Programme Tabs
+        // ========================================
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
-        
         if (tabBtns.length) {
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -2110,37 +2061,33 @@
                 });
             });
         }
-        
-        // Image Slider Functionality
+
+        // ========================================
+        // 3. Image Slider Functionality
+        // ========================================
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
         const prevBtn = document.querySelector('.slider-prev');
         const nextBtn = document.querySelector('.slider-next');
         let currentSlide = 0;
         let slideInterval;
-        
+
         function showSlide(index) {
             if (index < 0) index = slides.length - 1;
             if (index >= slides.length) index = 0;
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
+            slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
             currentSlide = index;
         }
-        
+
         function nextSlide() { showSlide(currentSlide + 1); resetInterval(); }
         function prevSlide() { showSlide(currentSlide - 1); resetInterval(); }
         function resetInterval() { if (slideInterval) clearInterval(slideInterval); slideInterval = setInterval(nextSlide, 5000); }
-        
+
         if (prevBtn && nextBtn && slides.length) {
             prevBtn.addEventListener('click', prevSlide);
             nextBtn.addEventListener('click', nextSlide);
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => { showSlide(index); resetInterval(); });
-            });
+            dots.forEach((dot, index) => dot.addEventListener('click', () => { showSlide(index); resetInterval(); }));
             slideInterval = setInterval(nextSlide, 5000);
             const sliderContainer = document.querySelector('.slider-container');
             if (sliderContainer) {
@@ -2148,12 +2095,160 @@
                 sliderContainer.addEventListener('mouseleave', () => { slideInterval = setInterval(nextSlide, 5000); });
             }
         }
-        
-        // Smooth scroll for anchor links
+
+        // ========================================
+        // 4. Search Engine Functionality
+        // ========================================
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchBtnTop = document.getElementById('searchBtnTop');
+        const searchBtn = document.getElementById('searchBtn');
+        const closeSearch = document.getElementById('closeSearch');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        // Searchable content
+        const searchableContent = [
+            { title: "BSc Entrepreneurial Finance", category: "Programme", description: "Core finance curriculum with startup financial modeling and venture capital fundamentals", link: "#" },
+            { title: "BSc Venture Capital & Private Equity", category: "Programme", description: "Focus on fund structures, deal sourcing, due diligence, and valuation", link: "#" },
+            { title: "MSc Entrepreneurial Finance", category: "Programme", description: "Advanced study of financing new ventures, angel investing, and exit strategies", link: "#" },
+            { title: "MSc Venture Capital & Growth Equity", category: "Programme", description: "Deep dive into institutional venture capital, fund management, and LP-GP dynamics", link: "#" },
+            { title: "Executive Certificate: Funding Your Venture", category: "Programme", description: "8-week programme for entrepreneurs seeking angel or VC funding", link: "#" },
+            { title: "Dr. Sarah Okafor", category: "Faculty", description: "Founding Dean & Professor - Venture Capital, Term Sheets", link: "#" },
+            { title: "Prof. Michael Chen", category: "Faculty", description: "Professor of Practice - Startup Financial Modeling", link: "#" },
+            { title: "Mwaba Lewis", category: "Founder", description: "Founder of Nolan University - Teaches Finance for Founders", link: "#" },
+            { title: "Lewis Venture Fund", category: "Programme", description: "Student-managed micro-fund deploying real capital", link: "#" },
+            { title: "Term Sheet Negotiation Workshop", category: "Event", description: "Hands-on workshop with industry experts", link: "#" },
+            { title: "Annual Venture Capital Conference", category: "Event", description: "Keynotes, panels, and networking with top VCs", link: "#" },
+            { title: "Scholarships & Financial Aid", category: "Admissions", description: "Founder's Scholarship, Merit Scholarship, Diversity Scholarship", link: "#" }
+        ];
+
+        function performSearch() {
+            const query = searchInput.value.toLowerCase().trim();
+            if (query === "") {
+                searchResults.innerHTML = '<p style="text-align:center; color: var(--gray-dark);">Type something to search...</p>';
+                return;
+            }
+            const results = searchableContent.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.description.toLowerCase().includes(query) ||
+                item.category.toLowerCase().includes(query)
+            );
+            if (results.length === 0) {
+                searchResults.innerHTML = '<p style="text-align:center; color: var(--gray-dark);">No results found. Try different keywords.</p>';
+                return;
+            }
+            searchResults.innerHTML = results.map(item => `
+                <div class="search-result-item" onclick="window.location.href='${item.link}'">
+                    <h4>${item.title}</h4>
+                    <p>${item.category} - ${item.description.substring(0, 100)}${item.description.length > 100 ? '...' : ''}</p>
+                </div>
+            `).join('');
+        }
+
+        function openSearch() {
+            searchOverlay.classList.add('active');
+            searchInput.value = '';
+            searchResults.innerHTML = '<p style="text-align:center; color: var(--gray-dark);">Type something to search...</p>';
+            searchInput.focus();
+        }
+
+        function closeSearchModal() {
+            searchOverlay.classList.remove('active');
+        }
+
+        if (searchBtnTop) searchBtnTop.addEventListener('click', openSearch);
+        if (searchBtn) searchBtn.addEventListener('click', performSearch);
+        if (closeSearch) closeSearch.addEventListener('click', closeSearchModal);
+        if (searchInput) searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
+        searchOverlay?.addEventListener('click', (e) => { if (e.target === searchOverlay) closeSearchModal(); });
+
+        // ========================================
+        // 5. Student Portal Functionality
+        // ========================================
+        const portalOverlay = document.getElementById('portalOverlay');
+        const studentPortalBtn = document.getElementById('studentPortalBtn');
+        const closePortal = document.getElementById('closePortal');
+        const portalLoginBtn = document.getElementById('portalLoginBtn');
+        const portalEmail = document.getElementById('portalEmail');
+        const portalPassword = document.getElementById('portalPassword');
+        const notificationToast = document.getElementById('notificationToast');
+        const toastMessage = document.getElementById('toastMessage');
+
+        function showNotification(message, isError = false) {
+            toastMessage.textContent = message;
+            notificationToast.style.background = isError ? '#DC3545' : '#28A745';
+            notificationToast.classList.add('show');
+            setTimeout(() => { notificationToast.classList.remove('show'); }, 3000);
+        }
+
+        function openPortal() {
+            portalOverlay.classList.add('active');
+            if (portalEmail) portalEmail.value = '';
+            if (portalPassword) portalPassword.value = '';
+        }
+
+        function closePortalModal() {
+            portalOverlay.classList.remove('active');
+        }
+
+        function handlePortalLogin() {
+            const email = portalEmail?.value.trim();
+            const password = portalPassword?.value.trim();
+            if (!email || !password) {
+                showNotification('Please enter both email and password', true);
+                return;
+            }
+            if (email === 'student@nolan.edu' && password === 'password123') {
+                showNotification('Login successful! Redirecting to dashboard...');
+                setTimeout(() => {
+                    closePortalModal();
+                    window.open('#', '_blank');
+                }, 1500);
+            } else {
+                showNotification('Invalid credentials. Demo: student@nolan.edu / password123', true);
+            }
+        }
+
+        if (studentPortalBtn) studentPortalBtn.addEventListener('click', openPortal);
+        if (closePortal) closePortal.addEventListener('click', closePortalModal);
+        if (portalLoginBtn) portalLoginBtn.addEventListener('click', handlePortalLogin);
+        portalOverlay?.addEventListener('click', (e) => { if (e.target === portalOverlay) closePortalModal(); });
+
+        // Forgot password and create account links
+        const forgotPassword = document.getElementById('forgotPassword');
+        const createAccount = document.getElementById('createAccount');
+        if (forgotPassword) forgotPassword.addEventListener('click', (e) => { e.preventDefault(); showNotification('Password reset link sent to your email!'); });
+        if (createAccount) createAccount.addEventListener('click', (e) => { e.preventDefault(); showNotification('Account creation feature coming soon!'); });
+
+        // ========================================
+        // 6. Faculty & Staff Link
+        // ========================================
+        const facultyStaffLink = document.querySelector('.top-bar-right a:nth-child(2)');
+        if (facultyStaffLink) {
+            facultyStaffLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showNotification('Faculty & Staff portal coming soon. Please check back later.');
+            });
+        }
+
+        // ========================================
+        // 7. Alumni Link
+        // ========================================
+        const alumniLink = document.querySelector('.top-bar-right a:nth-child(3)');
+        if (alumniLink) {
+            alumniLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showNotification('Alumni network portal coming soon. Stay connected!');
+            });
+        }
+
+        // ========================================
+        // 8. Smooth Scroll & Sticky Header
+        // ========================================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
-                if (href === "#" || href === "") return;
+                if (href === "#" || href === "" || href === "#") return;
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
@@ -2161,23 +2256,20 @@
                 }
             });
         });
-        
-        // Sticky header shadow
+
         const header = document.querySelector('.main-header');
         if (header) {
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-                } else {
-                    header.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)';
-                }
+                header.style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(0,0,0,0.1)' : '0 2px 8px rgba(0,0,0,0.05)';
             });
         }
-        
-        // Animation on scroll
+
+        // ========================================
+        // 9. Animation on Scroll
+        // ========================================
         const animateElements = document.querySelectorAll('.programme-card, .faculty-card, .exp-card, .news-card, .testimonial-card');
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
@@ -2186,33 +2278,35 @@
                 }
             });
         }, observerOptions);
-        
         animateElements.forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
-        
-        // Close mobile nav when clicking a link
+
+        // ========================================
+        // 10. Close mobile nav on link click
+        // ========================================
         const mobileLinks = document.querySelectorAll('.mobile-nav a');
         mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', () => {
                 mobileNav.classList.remove('show');
                 if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
             });
         });
-        
-        // Update copyright year
+
+        // ========================================
+        // 11. Update copyright year
+        // ========================================
         const yearSpan = document.querySelector('.footer-bottom p');
         if (yearSpan) {
-            const currentYear = new Date().getFullYear();
-            yearSpan.innerHTML = yearSpan.innerHTML.replace('2025', currentYear);
+            yearSpan.innerHTML = yearSpan.innerHTML.replace('2025', new Date().getFullYear());
         }
-        
+
         console.log('Lewis School of Entrepreneurial Finance — Where Capital Meets Enterprise');
     })();
 </script>
 
 </body>
-    </html>
+            </html>
